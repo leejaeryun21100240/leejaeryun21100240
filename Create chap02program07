@@ -1,0 +1,31 @@
+package src01;
+
+import java.util.Scanner;
+
+public class program07 {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		int input = in.nextInt();
+
+		// 1
+		if (((input % 4) == 0) && ((input % 5) == 0)) {
+			System.out.println("true");
+		} else {
+			System.out.println("false");
+		}
+
+		// 2
+		if (((input % 4) == 0) || ((input % 5) == 0)) {
+			System.out.println("true");
+		} else {
+			System.out.println("false");
+		}
+
+		// 3
+		if ((((input % 4) != 0) && ((input % 5) == 0)) || (((input % 4) == 0) && ((input % 5) != 0))) {
+			System.out.println("true");
+		} else {
+			System.out.println("false");
+		}
+	}
+}
