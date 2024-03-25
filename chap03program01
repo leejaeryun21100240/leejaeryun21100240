@@ -1,0 +1,19 @@
+package src02;
+
+import java.util.Scanner;
+
+public class chap03program01 {
+	public static void main(String[] args) {
+
+		Scanner juScanner = new Scanner(System.in);
+		int grade = juScanner.nextInt();
+
+		if (grade >= 19) {
+			System.out.println("성년");
+		} else {
+			System.out.println("미성년");
+		}
+		juScanner.close();
+
+	}
+}
