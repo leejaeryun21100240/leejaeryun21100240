@@ -1,0 +1,34 @@
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.OptionalDouble;
+
+public class StreamOperations {
+    public static void main(String[] args) {
+        // 스트림 생성
+        Stream<Integer> stream1 = Stream.of(1, 2, 3, 4, 5);
+        
+        // 1. 원소에 대한 평균
+        OptionalDouble average = stream1
+            .mapToInt(Integer::intValue)
+            .average();
+        average.ifPresent(avg -> System.out.println("원소에 대한 평균: " + avg));
+
+        // 스트림 다시 생성
+        Stream<Integer> stream2 = Stream.of(1, 2, 3, 4, 5);
+        
+        // 2. 원소의 제곱 값에 대한 평균
+        OptionalDouble squareAverage = stream2
+            .mapToInt(x -> x * x)
+            .average();
+        squareAverage.ifPresent(avg -> System.out.println("원소의 제곱 값에 대한 평균: " + avg));
+
+        // 스트림 다시 생성
+        Stream<Integer> stream3 = Stream.of(1, 2, 3, 4, 5);
+        
+        // 3. 원소를 하이픈('-')으로 연결한 문자열로 수집
+        String joinedString = stream3
+            .map(String::valueOf)
+            .collect(Collectors.joining("-"));
+        System.out.println("원소를 하이픈('-')으로 연결한 문자열: " + joinedString);
+    }
+}
