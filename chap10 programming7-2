@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Person {
+	private String name;
+	private double height, weight;
+	
+	public Person(String name, double height, double weight) {
+		super();
+		this.name = name;
+		this.height = height;
+		this.weight = weight;
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public double getHeight() {
+		return height;
+	}
+
+	public double getWeight() {
+		return weight;
+	}
+
+	public static final ArrayList<Person> persons = new ArrayList<>(
+			Arrays.asList(new Person("황진이", 160, 45), new Person("이순신", 180, 80),
+					new Person("홍길동", 170, 68), new Person("김삿갓", 175, 65),
+					new Person("배장화", 155, 48)));
+}
