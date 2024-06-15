@@ -1,0 +1,57 @@
+mport java.util.*;
+import java.util.stream.Collectors;
+
+// Nation 클래스 정의
+class Nation {
+    private String name;
+    private boolean isIsland;
+    private int gdpRank;
+
+    public Nation(String name, boolean isIsland, int gdpRank) {
+        this.name = name;
+        this.isIsland = isIsland;
+        this.gdpRank = gdpRank;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isIsland() {
+        return isIsland;
+    }
+
+    public int getGdpRank() {
+        return gdpRank;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Nation 객체 리스트 생성
+        List<Nation> nations = Arrays.asList(
+                new Nation("ROK", false, 10),
+                new Nation("USA", false, 1),
+                new Nation("China", false, 2),
+                new Nation("Morocco", false, 50),
+                new Nation("United Kingdom", true, 6),
+                new Nation("New Zealand", true, 51),
+                new Nation("Philippines", true, 36),
+                new Nation("Sri Lanka", true, 68)
+        );
+
+        // 선진국의 GDP 순위 기준으로 정렬
+        Comparator<Nation> byGdpRank = Comparator.comparingInt(Nation::getGdpRank);
+        Map<Boolean, Map<Boolean, List<String>>> groupedNations = nations.stream()
+                .collect(Collectors.groupingBy(
+                        Nation::isIsland,  // 섬 여부에 따라 첫 번째 그룹핑
+                        Collectors.groupingBy(
+                                nation -> nation.getGdpRank() <= 12,  // GDP 순위에 따라 두 번째 그룹핑
+                                Collectors.mapping(Nation::getName, Collectors.toList())
+                        )
+                ));
+
+        // 결과 출력
+        System.out.println(groupedNations);
+    }
+}
