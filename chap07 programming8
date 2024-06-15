@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class EchoerTest {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        Echoer e = new Echoer() {
+            @Override
+            void echo() {
+                String s = in.nextLine();
+                while (true) {
+                    if (s.equals("끝")) {
+                        System.out.println(s);
+                        break;
+                    }
+                    else {
+                        System.out.println(s);
+                        s = in.nextLine();
+                    }
+                }
+            }
+        };
+        e.start();
+        e.echo();
+        e.stop();
+    }
+}
+
+abstract class Echoer {
+    void start() {
+        System.out.println("시작합니다.");
+    }
+
+    abstract void echo();
+
+    void stop() {
+        System.out.println("종료합니다.");
+    }
+}
