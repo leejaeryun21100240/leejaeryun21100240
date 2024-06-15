@@ -1,0 +1,17 @@
+import java.util.stream.IntStream;
+
+public class Main {
+    public static void main(String[] args) {
+        int count = 0;  // 생성할 집합의 개수
+        int limit = 5;  // 생성할 집합의 개수 제한
+        
+        // 피타고라스 정리를 만족하는 (x, y, z) 집합을 생성하는 스트림
+        IntStream.range(1, 100)  // x 범위: 1부터 100까지
+                 .boxed()
+                 .flatMap(x -> IntStream.range(x, 100)  // y 범위: x부터 100까지
+                                        .mapToObj(y -> new int[]{x, y, (int) Math.sqrt(x*x + y*y)})
+                                        .filter(arr -> Math.pow(arr[2], 2) == x*x + y*y && Math.sqrt(x*x + y*y) % 1 == 0))
+                 .limit(limit)
+                 .forEach(arr -> System.out.println("(" + arr[0] + ", " + arr[1] + ", " + arr[2] + ")"));
+    }
+}
