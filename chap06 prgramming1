@@ -1,0 +1,34 @@
+public class TestCircle {
+    public static void main(String[] args) {
+        Circle[] circles = {new Circle(5), new ColoredCircle(10, "빨간색")};
+
+        for (Circle c : circles)
+            c.show();
+    }
+}
+
+class Circle {
+    protected int radius;
+
+    public Circle(int radius) {
+        this.radius = radius;
+    }
+
+    void show() {
+        System.out.println("반지름이 " + radius + "인 원이다.");
+    }
+}
+
+class ColoredCircle extends Circle {
+    private String color;
+
+    public ColoredCircle(int radius, String color) {
+        super(radius);
+        this.color = color;
+    }
+
+    @java.lang.Override
+    void show() {
+        System.out.println("반지름이 " + radius + "인 " + color + " 원이다.");
+    }
+}
