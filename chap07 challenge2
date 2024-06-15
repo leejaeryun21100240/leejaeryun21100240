@@ -1,53 +1,58 @@
-package challenge.two;
-
-interface Countable {
-	void count();
-}
-
-class Bird implements Countable {
-	String name;
-
-	Bird(String name) {
-		this.name = name;
-	}
-
-	public void count() {
-		System.out.println(name + "뻐꾸기 2마리 있다.");
-	}
-
-	void fly() {
-		System.out.println("2 " + name + "독수리가 2마리 있다.");
-	}
-}
-
-class Tree implements Countable {
-	String name;
-
-	Tree(String name) {
-		this.name = name;
-	}
-
-	public void count() {
-		System.out.println(name + "사과나무 5그루있다.");
-	}
-
-	void ripen() {
-		System.out.println(name + "밤나무가 5그루 있다".");
-	}
-}
-
 public class CountableTest {
-	public static void main(String[] args) {
-		Countable[] m = { new Bird("뻐꾸기"), new Bird("독수리"), new Tree("사과나무"), new Tree("밤나무") };
+    public static void main(String[] args) {
+        Countable[] m = {new Bird("뻐꾹이", 5), new Bird("독수리", 2), new Tree("사과나무", 10), new Tree("밤나무", 7)};
 
-		for (Countable e : m)
-			e.count();
+        for (Countable e : m)
+            e.count();
 
-		for (int i = 0; i < m.length; i++) {
-			if (m[i] instanceof Bird)
-				((Bird) m[i]).fly();
-			else
-				((Tree) m[i]).ripen();
-		}
-	}
+        for (int i = 0; i < m.length; i++){
+            if (m[i] instanceof Bird)
+                ((Bird) m[i]).fly();
+            else if (m[i] instanceof Tree)
+                ((Tree) m[i]).ripen();
+        }
+    }
+}
+
+abstract class Countable {
+    protected String name; //필드
+    protected int num; //필드
+
+    public Countable(String name, int num) { //생성자
+        this.name = name;
+        this.num = num;
+    }
+
+    abstract void count(); //추상 메서드
+}
+
+class Bird extends Countable {
+    public Bird(String name, int num) {
+        super(name, num);
+    }
+
+    @Override
+    public void count() {
+        System.out.println(name + "가 " + num + "마리 있다.");
+    }
+
+    void fly() {
+        System.out.println(num + "마리의 " + name + "가 날아간다.");
+    }
+}
+
+
+class Tree extends Countable {
+    public Tree(String name, int num) {
+        super(name, num);
+    }
+
+    @Override
+    public void count() {
+        System.out.println(name + "가 " + num + "그루 있다.");
+    }
+
+    void ripen() {
+        System.out.println(num + "그루 "+ name + "에 열매가 잘 익었다.");
+    }
 }
