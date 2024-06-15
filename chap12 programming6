@@ -1,0 +1,30 @@
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class CityPopulation {
+    public static void main(String[] args) {
+        // 도시명을 포함하는 리스트
+        List<String> cities = Arrays.asList("서울", "워싱턴", "베이징", "파리", "마드리드", "런던");
+
+        // 인구 수를 포함하는 리스트
+        List<Double> populations = Arrays.asList(973.7, 63.2, 2115.0, 224.4, 326.5, 853.9);
+
+        // 도시와 인구 수를 매핑한 Map 생성
+        Map<String, Double> cityPopulationMap = new HashMap<>();
+        for (int i = 0; i < cities.size(); i++) {
+            cityPopulationMap.put(cities.get(i), populations.get(i));
+        }
+
+        // 특정 도시의 인구 수 검색 함수
+        String cityToSearch = "서울";
+        double population = getPopulation(cityToSearch, cityPopulationMap);
+        System.out.println(cityToSearch + "의 인구 수: " + population);
+    }
+
+    // 특정 도시의 인구 수를 검색하는 함수
+    public static double getPopulation(String city, Map<String, Double> cityPopulationMap) {
+        return cityPopulationMap.getOrDefault(city, 0.0); // 해당 도시가 없을 경우 0.0을 반환
+    }
+}
