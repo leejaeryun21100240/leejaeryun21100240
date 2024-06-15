@@ -1,0 +1,53 @@
+package challenge.two;
+
+interface Countable {
+	void count();
+}
+
+class Bird implements Countable {
+	String name;
+
+	Bird(String name) {
+		this.name = name;
+	}
+
+	public void count() {
+		System.out.println(name + "뻐꾸기 2마리 있다.");
+	}
+
+	void fly() {
+		System.out.println("2 " + name + "독수리가 2마리 있다.");
+	}
+}
+
+class Tree implements Countable {
+	String name;
+
+	Tree(String name) {
+		this.name = name;
+	}
+
+	public void count() {
+		System.out.println(name + "사과나무 5그루있다.");
+	}
+
+	void ripen() {
+		System.out.println(name + "밤나무가 5그루 있다".");
+	}
+}
+
+public class CountableTest {
+	public static void main(String[] args) {
+		Countable[] m = { new Bird("뻐꾸기"), new Bird("독수리"), new Tree("사과나무"), new Tree("밤나무") };
+
+		for (Countable e : m)
+			e.count();
+
+		for (int i = 0; i < m.length; i++) {
+			if (m[i] instanceof Bird)
+				((Bird) m[i]).fly();
+			else
+				((Tree) m[i]).ripen();
+		}
+	}
+}
