@@ -1,0 +1,35 @@
+public class HotelTest {
+    public static void main(String[] args) {
+        Hotel hotel = new Hotel();
+        hotel.add(5, "호돌이");
+        hotel.add(7, "길동이");
+        hotel.show();
+    }
+}
+
+class Hotel {
+    Room[] rooms;
+
+    public Hotel() {
+        rooms = new Room[10];
+    }
+
+    class Room {
+        public String name;
+
+        public Room(String name) {
+            this.name = name;
+        }
+    }
+
+    void add(int number, String name) {
+        rooms[number] = new Room(name);
+    }
+
+    void show() {
+        for (int i = 0; i < rooms.length; i++) {
+            if (rooms[i] != null)
+                System.out.printf("%d번 방을 %s가 예약했습니다.\n", i, rooms[i].name);
+        }
+    }
+}
