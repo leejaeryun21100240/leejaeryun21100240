@@ -1,0 +1,66 @@
+public class TestPerson {
+    public static void main(String[] args) {
+        Person[] persons = {new Person("길동이", 22), new Student("황진이", 23, 100), new ForeignStudent("Amy", 30, 200, "U.S.A")};
+
+        for (Person p : persons)
+            p.show();
+    }
+}
+
+class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    void show() {
+        System.out.println("사람[이름 : " + getName() + ", 나이 : " + getAge() + "]");
+    }
+}
+
+class Student extends Person {
+    private int number;
+
+    public Student(String name, int age, int number) {
+        super(name, age);
+        this.number = number;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    @Override
+    void show() {
+        System.out.println("학생[이름 : " + getName() + ", 나이 : " + getAge() + ", 학번 : " + getNumber() + "]");
+    }
+}
+
+class ForeignStudent extends Student {
+    private String contry;
+
+    public ForeignStudent(String name, int age, int number, String contry) {
+        super(name, age, number);
+        this.contry = contry;
+    }
+
+    public String getContry() {
+        return contry;
+    }
+
+    @Override
+    void show() {
+        System.out.println("외국학생[이름 : " + getName() + ", 나이 : " + getAge() + ", 학번 : " + getNumber() + ", 국적 : " + getContry() + "]");
+    }
+}
