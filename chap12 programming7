@@ -1,3 +1,44 @@
+package chap12;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+class CountLetter {
+    char lookFor;
+    String fileName;
+    int count =0;
+
+    public CountLetter (char lookFor,String fileName) {
+        this.lookFor = lookFor;
+        this.fileName = fileName;
+    }
+
+    public int count() {
+        try {
+            FileReader reader = new FileReader(fileName);
+            BufferedReader br = new BufferedReader(reader);
+            char[] buf = new char[10000];
+            int bufLen = 0;
+            while (true) {
+                int c = br.read();
+                if (c == -1) break;
+                buf[bufLen++] = (char) c;
+            }
+            for (int i = 0; i < bufLen; i++) {
+                if (buf[i] == lookFor) {
+                    count++;
+                }
+            }
+            reader.close();
+            br.close();
+        } catch (IOException e) {
+        }
+        return count;
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -11,4 +52,3 @@ public class Main {
         System.out.format("%s 파일에 %c 문자가 %d개 %n", fileName, lookFor, count);
     }
 }
-
