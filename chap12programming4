@@ -1,0 +1,47 @@
+import java.util.Arrays;
+import java.util.List;
+
+public class Nation {
+    private String name;
+    private boolean landLocked;
+
+    public Nation(String name, boolean landLocked) {
+        this.name = name;
+        this.landLocked = landLocked;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isLandLocked() {
+        return landLocked;
+    }
+
+    // Example nations list
+    public static List<Nation> nations = Arrays.asList(
+        new Nation("Switzerland", true),
+        new Nation("Australia", false),
+        new Nation("Austria", true),
+        new Nation("Brazil", false),
+        new Nation("Nepal", true),
+        new Nation("India", false)
+    );
+}
+
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class LandLockedNations {
+    public static void main(String[] args) {
+        // Nation 클래스의 nations 리스트에서 육지에 있는 나라를 필터링하여 이름을 콤마와 공백으로 연결
+        String result = Nation.nations.stream()
+                                      .filter(Nation::isLandLocked)
+                                      .map(Nation::getName)
+                                      .collect(Collectors.joining(", "));
+
+        // 결과 출력
+        System.out.println(result);
+    }
+}
