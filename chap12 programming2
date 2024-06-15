@@ -1,0 +1,14 @@
+import java.util.Arrays;
+import java.util.List;
+
+public class CapitalFilter {
+    public static void main(String[] args) {
+        // 수도 리스트 생성
+        List<String> capitals = Arrays.asList("서울", "워싱턴", "베이징", "파리", "마드리드", "런던");
+
+        // 문자열의 크기가 3인 수도만 필터링하여 출력
+        capitals.stream()
+                .filter(capital -> capital.length() == 3)
+                .forEach(System.out::println);
+    }
+}
