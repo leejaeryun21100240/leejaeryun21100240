@@ -1,0 +1,24 @@
+package sec12;
+
+import java.util.List;
+import java.util.stream.Stream;
+
+public class challenge {
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        List<String> names = List.of("홍길동", "배장화", "임꺽정", "연흥부", "김선달", "황진이");
+        Stream s = names.stream();
+        s.filter(x -> ((String) x).charAt(0) < '이').forEach(x -> System.out.print(x + " "));
+        System.out.println();
+        s = names.stream();
+        s.sorted().forEach(x -> System.out.print(x + " "));
+        System.out.println();
+        s = names.stream();
+        System.out.println(s.findFirst());
+        s = names.stream();
+        System.out.println(s.findFirst().get());
+        s = names.stream();
+        System.out.println(s.count());
+    }
+}
