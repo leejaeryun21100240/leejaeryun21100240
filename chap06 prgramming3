@@ -1,0 +1,53 @@
+public class TestPoint {
+    public static void main(String[] args) {
+        Point[] points = {new Point(5, 10), new MovablePoint(6, 12, 100, 150)};
+
+        for (Point p : points)
+            System.out.println(p.toString());
+    }
+}
+
+class Point {
+    private int x,y;
+
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    @Override
+    public String toString() {
+        return "x좌표 : " + getX() + ", y좌표 : " + getY();
+    }
+}
+
+class MovablePoint extends Point {
+    private int xSpeed, ySpeed;
+
+    public MovablePoint(int x, int y, int xSpeed, int ySpeed) {
+        super(x, y);
+        this.xSpeed = xSpeed;
+        this.ySpeed = ySpeed;
+    }
+
+    public int getxSpeed() {
+        return xSpeed;
+    }
+
+    public int getySpeed() {
+        return ySpeed;
+    }
+
+    @Override
+    public String toString() {
+        return "x좌표 : " + getX() + ", 이동속도 : " + getxSpeed() + " / y좌표 : " + getY() + ", 이동속도 : " + getySpeed();
+    }
+}
