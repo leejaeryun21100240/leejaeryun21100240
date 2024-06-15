@@ -1,0 +1,22 @@
+public class ShapeTest {
+	public static void main(String[] args) {
+		List<Shape> circlefindGabType = findShapes(Shape.shapes, "사각형", "", 1.0);
+		System.out.println("사각형 : " + circlefindGabType);
+
+		List<Shape> colorAreafindGabType = findShapes(Shape.shapes, "", "빨간색", 12.0);
+		System.out.println("빨간 도형(면적<=12.0) : " + colorAreafindGabType);
+	}
+    
+    public static List<Shape> findShapes(List<Shape> shapes, String type, String color, Double area) {
+		List<Shape> result3 = new ArrayList<>();
+
+		for (Shape typeColorArea : shapes) {
+			if (typeColorArea.getType().equals(type)) {
+				result3.add(typeColorArea);
+			} else if (typeColorArea.getColor().equals(color) && typeColorArea.getArea() < area) {
+				result3.add(typeColorArea);
+			}
+		}
+		return result3;
+	}
+}
