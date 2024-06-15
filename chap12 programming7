@@ -1,0 +1,23 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("민국", "지우", "하준", "지우", "하준", "지우");
+
+        // Map을 사용하여 이름과 등장 횟수를 저장
+        Map<String, Integer> frequencyMap = new HashMap<>();
+
+        // 리스트를 순회하면서 이름의 등장 횟수를 센다
+        for (String name : names) {
+            // 기존에 등장한 이름이면 해당 횟수를 증가시킨다
+            if (frequencyMap.containsKey(name)) {
+                frequencyMap.put(name, frequencyMap.get(name) + 1);
+            } else {  // 기존에 등장하지 않은 이름이면 새로운 항목으로 추가한다
+                frequencyMap.put(name, 1);
+            }
+        }
+
+        // 결과를 출력한다
+        System.out.println(frequencyMap);
+    }
+}
