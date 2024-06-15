@@ -1,0 +1,39 @@
+public class TestVehicle {
+    public static void main(String[] args) {
+        Car c = new Car("파랑", 200, 1000, 5);
+        c.show();
+
+        System.out.println();
+        Vehicle v = c;
+        v.show();
+    }
+}
+
+class Vehicle {
+    static String color; //자동차 색상
+    static int speed; //자동차 속도
+
+    public Vehicle(String color, int speed) {
+        this.color = color;
+        this.speed = speed;
+    }
+
+    static void show() {
+        System.out.println("자동차 색상 : " + color + ", 자동차 속도 : " + speed);
+    }
+}
+
+class Car extends Vehicle {
+    static int displacement; //자동차 배기량
+    static int gears; //자동차 기어 단수
+
+    public Car(String color, int speed, int displacement, int gears) {
+        super(color, speed);
+        this.displacement = displacement;
+        this.gears = gears;
+    }
+
+    static void show() {
+        System.out.println("자동차 색상 : " + color + ", 자동차 속도 : " + speed + ", 자동차 배기량 : " + displacement + ", 자동차 기어 단수 : " + gears);
+    }
+}
