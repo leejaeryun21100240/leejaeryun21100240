@@ -1,0 +1,14 @@
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+public class MappingExample {
+    public static void main(String[] args) {
+        // IntStream.rangeClosed를 사용하여 1부터 10까지의 숫자를 생성
+        String result = IntStream.rangeClosed(1, 10)
+                                 .mapToObj(i -> "A" + i)
+                                 .collect(Collectors.joining(" "));
+
+        // 결과 출력
+        System.out.println(result);
+    }
+}
